@@ -21,8 +21,20 @@ void add(node *head, int x) {
 
 // exersice 3.b
 int size(node *l) {
+ //Implement a function with the following signature: int size(node *l). It has the same
+// precondition as add and returns the number of elements in the list. E.g. if size(list) was
+// printed out at the first // show list here) in main, the result would be 3
 
-	return 0;
+  assert(l != NULL);
+    int numberOfElements = 0;
+    node *current = l->next;
+    
+    while (current != NULL) {
+        numberOfElements++;
+        current = current->next;
+    }
+    
+	return numberOfElements;
 }
 
 // exersice 3.c and 3.d
@@ -32,8 +44,16 @@ void printout(node *l) {
   // post: The values of the list are printed out
   node *p = l->next;
   while (p != NULL) {
-    printf("%d, ", p->data);
+    printf("%d", p->data);
+    p=p->next;
+
+    if(p != NULL){
+    printf(", ");
   }
+  }
+
+  
+
   printf("\n");
 }
 
@@ -42,8 +62,21 @@ int largest(node *l) {
   // pre:  head poinst to the first, empty element.
   // 	     The last element's next is NULL.
   // post: Returns the largest value of the list
+  node *p = l->next;
+  int max = 0;
+  while (p != NULL) {
+    int dataCurrent = p->data;
+    if(dataCurrent>max){
+      max = dataCurrent;
+    }
+       p=p->next;
 
-  return 0;
+
+  }
+  
+
+
+  return max;
 }
 
 #ifndef TEST
@@ -52,12 +85,19 @@ int main() {
   list->next = NULL; // create first empty element
 
   add(list, 1);
-  add(list, 3);
+  add(list, 55);
   add(list, 2);
   // Show list here
+  int nOfElements1 = size(list);
+  printf("%d\n",nOfElements1);
   add(list, 2);
   // Show list here
-
+  add(list, 45);
+  int nOfElements2 = size(list);
+  printf("%d\n",nOfElements2);
+  printout(list);
+  int maxValue = largest(list);
+  printf("%d\n",maxValue);
   return 0;
 }
 
