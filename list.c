@@ -66,7 +66,6 @@ assert(l->next != NULL);  // Check if the list is not empty
 
   node *p = l->next;
 
-  node *p = l->next;
   int max = p->data;
   while (p != NULL) {
     int dataCurrent = p->data;
