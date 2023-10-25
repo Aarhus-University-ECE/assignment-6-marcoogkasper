@@ -62,8 +62,12 @@ int largest(node *l) {
   // pre:  head poinst to the first, empty element.
   // 	     The last element's next is NULL.
   // post: Returns the largest value of the list
+assert(l->next != NULL);  // Check if the list is not empty
+
   node *p = l->next;
-  int max = 0;
+
+  node *p = l->next;
+  int max = p->data;
   while (p != NULL) {
     int dataCurrent = p->data;
     if(dataCurrent>max){
